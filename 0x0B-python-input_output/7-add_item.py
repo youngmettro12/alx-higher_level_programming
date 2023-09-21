@@ -1,9 +1,20 @@
 #!/usr/bin/python3
+"""
+contains add_item function
+"""
 
+from sys import argv
+save_to_json_file = __import__("5-save_to_json_file").save_to_json_file
+load_from_json_file = __import__("6-load_from_json_file").load_from_json_file
 
-import json
+filename = "add_item.json"
 
+try:
+    json_list = load_from_json_file(filename)
+except FileNotFoundError:
+    json_list = []
 
-def save_to_json_file(my_obj, filename):
-    with open(filename, "w", encoding="UTF-8") as f:
-        json.dump(my_obj, f)
+for arg in argv[1:]:
+    json_list.append(arg)
+
+save_to_json_file(json_list, filename)

@@ -1,9 +1,10 @@
 #!/usr/bin/python3
+"""
+contains the append_write function
+"""
 
 
-def read_lines(filename="", nb_lines=0):
-    with open(filename, "r", encoding="UTF-8") as f:
-        if nb_lines <= 0:
-            print(f.read(), end="")
-        for index in range(nb_lines):
-            print(f.readline(), end="")
+def append_write(filename="", text=""):
+    """returns number ofcharacters added at the end of text file(UTF8)"""
+    with open(filename, "a", encoding='utf=8') as f:
+        return f.write(text)
